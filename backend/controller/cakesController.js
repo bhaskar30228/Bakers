@@ -27,12 +27,7 @@ export const getCake=async(req,res)=>{
 }
 
 export const postCakes = async (req, res) => {
-    console.log("Backend endpoint hit"); // Debug 1
     const { name, price, weight, flavors } = req.body;
-    console.log("Request body:", req.body); // Debug 2
-    console.log("Uploaded file:", req.file); // Debug 3
-    console.log("file",req.file);
-    
     if (!name || !price || !weight || !flavors || !req.file) {
         console.log("Validation failed - missing fields"); // Debug 4
         return res.status(400).json({ message: "All fields are required" });

@@ -29,7 +29,7 @@ const CakesPage = () => {
   useEffect(() => {
     const fetchCakes = async () => {
       try {
-        const response = await axios.get('https://bakers-ujm5.onrender.com/cakes');
+        const response = await axios.get('https://bakers-1.onrender.com/cakes');
         setCakes(response.data || []); // Ensure we always have an array
         setLoading(false);
         console.log(response.data);
@@ -153,7 +153,7 @@ const filteredCakes = cakes.filter(cake => {
               <div className="image-container">
                 <img 
                  alt={cake.image || 'Cake image'} 
-                 src={`https://bakers-ujm5.onrender.com/images/${cake.image}`}
+                 src={`https://bakers-1.onrender.com/images/${cake.image}`}
                  className="cake-image"
                  onError={(e) => {
                    e.target.onerror = null;
