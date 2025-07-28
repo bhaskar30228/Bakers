@@ -9,7 +9,11 @@ dotenv.config()
 const app=express()
 app.use(express.json())  
 app.use(express.static("public"))
-app.use(cors())
+app.use(cors({
+  origin: "https://bakers-xi.vercel.app",  // your Vercel frontend domain
+  credentials: true  // only if using cookies/auth
+}));
+
 connectDb()
 app.get("/",(req,res)=>{
     res.send("Hello")
