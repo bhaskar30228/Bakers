@@ -9,10 +9,19 @@ dotenv.config()
 const app=express()
 app.use(express.json())  
 app.use(express.static("public"))
+const allowedOrigins = ['https://bakers-xi.vercel.app', 'http://localhost:5173'];
+
 app.use(cors({
-  origin: "https://bakers-xi.vercel.app",  // your Vercel frontend domain
-  credentials: true  // only if using cookies/auth
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
 }));
+
 
 connectDb()
 app.get("/",(req,res)=>{
