@@ -57,11 +57,11 @@ const AuthForm = ({onClose}) => {
             <div className="input-group">
               <FaUser className="input-icon" />
               <input
-                type="text"
-                name="name"
-                placeholder="Full Name"
-                onChange={(e)=>setUsername(e.target.value)}
-                required
+              type="text"
+              name="username"
+              placeholder="Username"
+              onChange={(e)=>setUsername(e.target.value)}
+              required
               />
             </div>
           )}

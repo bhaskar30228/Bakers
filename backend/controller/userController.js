@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken"
 
 export const userSignUp=async(req,res)=>{
     const{username,email,password}=req.body
+     console.log("Received signUp data:", req.body); 
     if(!username || !email || !password){
         return res.status(400).json({message:"All fiels are required"})
     }
