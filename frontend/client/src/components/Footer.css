@@ -1,0 +1,218 @@
+/* Footer.css */
+
+.bakery-footer {
+  background-color: #f8f1e9;
+  color: #5a3921;
+  padding: 3rem 0 0;
+  font-family: 'Poppins', sans-serif;
+  border-top: 1px solid #e0d5c8;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.footer-section {
+  padding: 0 1rem;
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+  cursor: default;
+  color: #3a2613;
+  transition: all 0.3s ease;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #d4a76a;
+  transition: width 0.3s ease;
+}
+
+.section-title.active::after,
+.section-title:hover::after {
+  width: 100%;
+}
+
+.section-title.active,
+.section-title:hover {
+  color: #d4a76a;
+}
+
+.footer-section p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icons a {
+  color: #5a3921;
+  font-size: 1.2rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #d4a76a;
+  transform: translateY(-3px);
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+  color: #5a3921;
+  text-decoration: none;
+  transition: color 0.3s ease, padding-left 0.3s ease;
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  color: #d4a76a;
+  padding-left: 5px;
+}
+
+.contact-info {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.contact-info li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  gap: 0.5rem;
+}
+
+.opening-hours {
+  background-color: rgba(212, 167, 106, 0.1);
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.opening-hours h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #3a2613;
+}
+
+.opening-hours p {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+}
+
+.newsletter-form {
+  margin-top: 1.5rem;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.input-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #5a3921;
+}
+
+.newsletter-form input {
+  width: 100%;
+  padding: 0.8rem 1rem 0.8rem 2rem;
+  border: 1px solid #e0d5c8;
+  border-radius: 5px;
+  background-color: white;
+  color: #5a3921;
+  transition: border-color 0.3s ease;
+}
+
+.newsletter-form input:focus {
+  outline: none;
+  border-color: #d4a76a;
+}
+
+.subscribe-btn {
+  background-color: #d4a76a;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.subscribe-btn:hover {
+  background-color: #c0955d;
+  transform: translateY(-2px);
+}
+
+.footer-bottom {
+  background-color: #3a2613;
+  color: #f8f1e9;
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.legal-links {
+  margin-top: 0.8rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.legal-links a {
+  color: #f8f1e9;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.legal-links a:hover {
+  color: #d4a76a;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .footer-section {
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .legal-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

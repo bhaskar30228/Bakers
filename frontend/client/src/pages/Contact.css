@@ -1,0 +1,237 @@
+/* Contact Page Styles */
+.contact-page {
+  font-family: 'Poppins', sans-serif;
+  color: #5c3d21;
+}
+
+/* Hero Section */
+.contact-hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+              url('../assets/contact-hero.jpg') center/cover no-repeat;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-content h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+  font-size: 1.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Contact Info Section */
+.contact-info-section {
+  padding: 60px 0;
+  background-color: #fff9f0;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.contact-card {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-10px);
+}
+
+.contact-icon {
+  font-size: 2rem;
+  color: #d4a76a;
+  margin-bottom: 20px;
+}
+
+.contact-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #5c3d21;
+}
+
+/* Map and Form Section */
+.map-form-section {
+  padding: 60px 0;
+}
+
+.map-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.map-container {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.map-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.map-overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+.directions-btn {
+  background: #d4a76a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.directions-btn:hover {
+  background: #c0955d;
+  transform: translateY(-2px);
+}
+
+/* Contact Form */
+.contact-form-container {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form-container h2 {
+  font-family: 'Playfair Display', serif;
+  color: #5c3d21;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #d4a76a;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(212, 167, 106, 0.2);
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.submit-btn {
+  background: #d4a76a;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.submit-btn:hover {
+  background: #c0955d;
+  transform: translateY(-2px);
+}
+
+/* Social Media Section */
+.social-section {
+  padding: 60px 0;
+  background-color: #fff9f0;
+  text-align: center;
+}
+
+.social-section h2 {
+  font-family: 'Playfair Display', serif;
+  color: #5c3d21;
+  margin-bottom: 15px;
+}
+
+.social-section p {
+  margin-bottom: 30px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-icon {
+  color: #5c3d21;
+  font-size: 1.8rem;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #d4a76a;
+  transform: scale(1.2);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .map-form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-hero {
+    height: 250px;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .contact-hero {
+    height: 200px;
+  }
+  
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-content p {
+    font-size: 1.2rem;
+  }
+}
