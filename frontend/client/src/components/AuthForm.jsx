@@ -22,7 +22,7 @@ const AuthForm = ({onClose}) => {
     let endPoint=isLogin?"login":"signUp"
     const data=isLogin?{ email, password }: { username, email, password }
 
-     await axios.post(`http://localhost:5000/auth/${endPoint}`, data)
+     await axios.post(`https://bakers-ujm5.onrender.com/auth/${endPoint}`, data)
     .then((res)=>{
         localStorage.setItem("token",res.data.token)
         localStorage.setItem("user",JSON.stringify(res.data.user))

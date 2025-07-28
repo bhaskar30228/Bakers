@@ -56,7 +56,7 @@ const Cart = () => {
                             <div key={index} className="cart-item">
                                 <div className="item-image">
                                     <img 
-                                        src={`http://localhost:5000/images/${item.image}`}
+                                        src={`https://bakers-ujm5.onrender.com/images/${item.image}`}
                                         alt={item.name}
                                         onError={(e) => {
                                             e.target.onerror = null;

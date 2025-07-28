@@ -37,7 +37,7 @@ const handleSubmit = async (e) => {
         });
 
 
-        const response = await axios.post("http://localhost:5000/cakes", formData, {
+        const response = await axios.post("https://bakers-ujm5.onrender.com/cakes", formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
