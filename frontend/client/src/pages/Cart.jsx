@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import './Cart.css';
+import './cart.css';
 import { useNavigate } from 'react-router-dom';
 import Model from '../components/Model';
 import AuthForm from '../components/AuthForm';
