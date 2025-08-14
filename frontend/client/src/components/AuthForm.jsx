@@ -5,12 +5,6 @@ import { RxCrossCircled } from "react-icons/rx";
 import axios from "axios"
 const AuthForm = ({onClose}) => {
   const [isLogin, setIsLogin] = useState(true);
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    name: '',
-    phone: ''
-  });
   const [email,setEmail]=useState("")
   const [username,setUsername]=useState("")
   const [password,setPassword]=useState("")

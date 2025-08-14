@@ -3,7 +3,7 @@ import './AddCakes.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const AddCakes = ({ onAddCake }) => {
+const AddCakes = () => {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
@@ -35,17 +35,11 @@ const handleSubmit = async (e) => {
         cakesData.flavors.forEach(flavor => {
             formData.append("flavors", flavor);
         });
-
-
         const response = await axios.post("https://bakers-1.onrender.com/cakes", formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
         });
-        
         console.log("Server response:", response.data); // Debug C
         setSuccessMessage('Cake added successfully!');
-        setTimeout(() => navigate("/"), 1500);
+        setTimeout(() => navigate("/"), 1000);
     } catch (err) {
         console.error("Upload failed", err); // Debug D
         setErrorMessage(err.response?.data?.message || "Failed to add cake");
@@ -109,7 +103,7 @@ const handleInputChange = (e) => {
             value={cakesData.weight}
             onChange={handleInputChange}
             min="0"
-            step="0.01"
+            step="1"
             required
           />
         </div>
@@ -123,7 +117,7 @@ const handleInputChange = (e) => {
             value={cakesData.price}
             onChange={handleInputChange}
             min="0"
-            step="0.01"
+            step="100"
             required
           />
         </div>
@@ -153,7 +147,7 @@ const handleInputChange = (e) => {
                   checked={cakesData.flavors.includes(flavor)}
                   onChange={handleInputChange}
                 />
-                <label htmlFor={`flavor-${flavor}`}>{flavor}</label>
+                <label for={`flavor-${flavor}`}>{flavor}</label>
               </div>
             ))}
           </div>

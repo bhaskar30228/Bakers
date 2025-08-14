@@ -3,11 +3,11 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { FaShoppingCart, FaStar, FaHeart, FaRegHeart } from 'react-icons/fa';
 import './Cakes.css';
-import Navbar from '../components/Navbar'; // Adjust the import path as necessary
+import Navbar from '../components/Navbar'; 
 import { AuthContext } from '../context/AuthContext';
 import Model from '../components/Model';
 import { useNavigate } from 'react-router-dom';
-import AuthForm from '../components/AuthForm'; // Adjust the import path as necessary
+import AuthForm from '../components/AuthForm';
 const CakesPage = () => {
   const [cakes, setCakes] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -30,7 +30,7 @@ const CakesPage = () => {
     const fetchCakes = async () => {
       try {
         const response = await axios.get('https://bakers-1.onrender.com/cakes');
-        setCakes(response.data || []); // Ensure we always have an array
+        setCakes(response.data || []); 
         setLoading(false);
         console.log(response.data);
         
@@ -66,13 +66,13 @@ const filteredCakes = cakes.filter(cake => {
     return matchesSearch && matchesFilter;
   });
 
-  // Get unique flavors with null check
+ 
   const flavors = [...new Set(cakes
     .map(cake => cake.flavor ? cake.flavor.toLowerCase() : '')
     .filter(flavor => flavor !== '')
   )];
 
-  // Rest of the component remains the same...
+  
   if (loading) return (
     <div className="loading-container">
       <div className="spinner"></div>
@@ -182,12 +182,12 @@ const filteredCakes = cakes.filter(cake => {
                 </div>
                 
                 <p className="flavor">
-  Flavor: {
-    cake.flavors && Array.isArray(cake.flavors)
-      ? cake.flavors.join(', ')
-      : (cake.flavors || 'Unknown')
-  }
-</p>
+                Flavor: {
+                  cake.flavors && Array.isArray(cake.flavors)
+                    ? cake.flavors.join(', ')
+                    : (cake.flavors || 'Unknown')
+                }
+              </p>
 
                 <p className="weight">Weight: {cake.weight || 'N/A'}g</p>
                 

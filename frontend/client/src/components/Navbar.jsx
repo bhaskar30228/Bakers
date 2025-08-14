@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Link, useLocation ,NavLink, useNavigate } from 'react-router-dom';
+import { Link, useLocation , useNavigate } from 'react-router-dom';
 import "./Navbar.css";
 import Model from './Model';
 import AuthForm from "./AuthForm";
@@ -37,9 +37,7 @@ const Navbar = () => {
 
     // Helper function to check if link is active
     const isActive = (path) => {
-        return activeLink === path || 
-               (path === '/menu' && activeLink.startsWith('/menu')) ||
-               (path === '/order' && activeLink.startsWith('/order-online'));
+        return activeLink === path
     };
 
     return (
@@ -127,7 +125,6 @@ const Navbar = () => {
                     </div>
                 </div>
             </nav>
-            
             {isOpen && (
                 <Model>
                     <AuthForm onClose={onClose}/>

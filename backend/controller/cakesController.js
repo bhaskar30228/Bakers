@@ -1,19 +1,6 @@
 import multer from "multer"
 import Cakes from "../models/cakes.js"
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb)=> {
-    cb(null, './public/images')
-  },
-  filename: function (req, file, cb) {
-    const filename = Date.now() + '-' + file.originalname
-    cb(null,filename)
-  }
-})
-
-export const upload = multer({ storage:storage });
-
-
 
 export const getCakes=async(req,res)=>{
     const cakes=await Cakes.find()
@@ -29,10 +16,9 @@ export const getCake=async(req,res)=>{
 export const postCakes = async (req, res) => {
     const { name, price, weight, flavors } = req.body;
     if (!name || !price || !weight || !flavors || !req.file) {
-        console.log("Validation failed - missing fields"); // Debug 4
+        console.log("Validation failed - missing fields"); 
         return res.status(400).json({ message: "All fields are required" });
     }
-
     try {
         const newCake = await Cakes.create({
             name,
@@ -41,10 +27,10 @@ export const postCakes = async (req, res) => {
             flavors,
             image: req.file.filename
         });
-        console.log("New cake created:", newCake); // Debug 5
+        console.log("New cake created:", newCake); 
         return res.json(newCake);
     } catch (err) {
-        console.error("Database error:", err); // Debug 6
+        console.error("Database error:", err);
         return res.status(500).json({ message: "Server error" });
     }
 };

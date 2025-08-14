@@ -13,7 +13,7 @@ export function AuthProvider({ children }) {
     return savedCart ? JSON.parse(savedCart) : [];
 });
 
-useEffect(() => {3
+useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
 }, [cart]);
   return (
