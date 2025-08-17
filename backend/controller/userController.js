@@ -32,9 +32,9 @@ export const userLogin = async (req, res) => {
     }
 
     const user = await User.findOne({ email });
-    console.log(user);
     
     if (!user) {
+      console.log(user); 
       return res.status(401).json({ error: "Invalid credentials" });
     }
 
