@@ -16,6 +16,7 @@ const AuthForm = ({onClose}) => {
     e.preventDefault()
     let endPoint=isLogin?"login":"signUp"
     console.log("hello");
+    console.log(import.meta.env.VITE_BACKEND);
     
     const data=isLogin?{ email, password }: { username, email, password }
 
