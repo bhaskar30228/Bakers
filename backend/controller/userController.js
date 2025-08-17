@@ -1,10 +1,9 @@
 import User from "../models/user.js"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
-
+import { generateToken } from "../middleware/jwt.js"
 export const userSignUp=async(req,res)=>{
-    const{username,email,password}=req.body
-     console.log("Received signUp data:", req.body); 
+    const{username,email,password,role}=req.body
     if(!username || !email || !password){
         return res.status(400).json({message:"All fiels are required"})
     }
@@ -16,12 +15,11 @@ export const userSignUp=async(req,res)=>{
     const newUser=await User.create({
         username,
         email,
-        password:hashedPassword
+        password:hashedPassword,
+        role: role || "User" 
     })
 
-    const token =jwt.sign({email:newUser.email,id:newUser._id},process.env.SECRET_KEY,{
-        expiresIn:"2h"
-    })
+    const token =generateToken(newUser._id, newUser.role);
     return res.status(200).json({token,user:newUser })
 }
 
@@ -34,6 +32,7 @@ export const userLogin = async (req, res) => {
     }
 
     const user = await User.findOne({ email });
+    console.log(user);
     
     if (!user) {
       return res.status(400).json({ error: "Invalid credentials" });
@@ -44,12 +43,7 @@ export const userLogin = async (req, res) => {
       return res.status(400).json({ error: "Invalid credentials" });
     }
 
-    const token = jwt.sign(
-      { id: user._id, email: user.email },
-      process.env.SECRET_KEY,
-      { expiresIn: '2h' }
-    );
-    console.log(token);
+    const token = generateToken(user._id, user.role);
     
     return res.status(200).json({ token, user });
   } catch (error) {

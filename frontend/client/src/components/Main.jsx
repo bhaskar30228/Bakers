@@ -22,9 +22,13 @@ return (
                 <p className="main-desc">
                     Indulge in our freshly baked delights. Sign in to explore exclusive treats, special offers, and more!
                 </p>
+                {!isLoggedIn && (
+                    
                 <button onClick={setLogin} className="login-btn">
                     Login to Your Account
                 </button>
+                )
+                }
             </div>
             <div className="main-visuals">
                 <div className="animated-img cake"></div>

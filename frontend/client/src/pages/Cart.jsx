@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import './cart.css';
@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import Model from '../components/Model';
 import AuthForm from '../components/AuthForm';
 const Cart = () => {
-    
+    const [isLoading, setIsLoading] = useState(false);
     const { setCart, cart,token,isOpen,setIsOpen} = useContext(AuthContext);
     const navigate = useNavigate();
     // Remove item from cart
@@ -21,6 +21,7 @@ const Cart = () => {
         navigate('/menu');
     }
 
+    
     // Update quantity
     const updateQuantity = (index, newQuantity) => {
         
@@ -56,7 +57,7 @@ const Cart = () => {
                             <div key={index} className="cart-item">
                                 <div className="item-image">
                                     <img 
-                                        src={`https://bakers-1.onrender.com/images/${item.image}`}
+                                        src={`${import.meta.env.VITE_BACKEND||"http://localhost:5000"}/images/${item.image}`}
                                         alt={item.name}
                                         onError={(e) => {
                                             e.target.onerror = null;
@@ -104,7 +105,13 @@ const Cart = () => {
                             <span>Total:</span>
                             <span>${(total + 5.99).toFixed(2)}</span>
                         </div>
-                        <button className="checkout-btn">Proceed to Checkout</button>
+                        <button
+              type="submit"
+              disabled={cart.length === 0 || isLoading}
+              className="submit-order-btn"
+            >
+              {isLoading ? 'Processing...' : 'Place Order'}
+            </button>
                     </div>
                 </div>
             ) : (

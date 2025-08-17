@@ -8,7 +8,7 @@ import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import { GiCroissant } from 'react-icons/gi';
 
 const Navbar = () => {
-    const { isOpen, setIsOpen,onClose, setOnClose,cartLength, setCartLength,setIsLoggedIn,isLoggedIn} = useContext(AuthContext);
+    const { isOpen, setIsOpen,onClose, setOnClose,cartLength, setCartLength,setIsLoggedIn,isLoggedIn,isAdmin,setIsAdmin} = useContext(AuthContext);
     const [activeLink, setActiveLink] = useState("/");
     const location = useLocation();
     const navigate=useNavigate();
@@ -92,15 +92,16 @@ const Navbar = () => {
                                     Contact
                                 </Link>
                             </li>
-                            <li className="nav-item">
+                            {isAdmin &&(
+                                <li className='nav-item'>
                                 <Link 
-                                    className={`nav-link ${isActive("/order") ? "active" : ""}`} 
-                                    to="/order"
-                                    onClick={() => setActiveLink("/order")}
-                                >
-                                    Order Online
-                                </Link>
-                            </li>
+                                    className={`nav-link ${isActive("/addCake") ? "active" : ""}`} 
+                                    to="/addCake"
+                                    onClick={() => setActiveLink("/addCake")}>
+                                        Add cake
+                                    </Link>
+                                </li>
+                            )}
                         </ul>
                         
                         {/* Rest of your navbar code remains the same */}

@@ -3,23 +3,28 @@ import { FaUser, FaLock, FaEnvelope, FaPhone, FaSignInAlt, FaUserPlus } from 're
 import './AuthForm.css'; // We'll create this CSS file next
 import { RxCrossCircled } from "react-icons/rx";
 import axios from "axios"
+
 const AuthForm = ({onClose}) => {
   const [isLogin, setIsLogin] = useState(true);
   const [email,setEmail]=useState("")
   const [username,setUsername]=useState("")
   const [password,setPassword]=useState("")
   const [errors,setErrors]=useState("")
- 
+  
 
   const handleSubmit = async(e) => {
     e.preventDefault()
     let endPoint=isLogin?"login":"signUp"
+    console.log("hello");
+    
     const data=isLogin?{ email, password }: { username, email, password }
 
-     await axios.post(`https://bakers-1.onrender.com/auth/${endPoint}`, data)
+    await axios.post(`${import.meta.env.VITE_BACKEND||"http://localhost:5000"}/auth/${endPoint}`, data)
     .then((res)=>{
+        console.log(res.data.user.role);
         localStorage.setItem("token",res.data.token)
         localStorage.setItem("user",JSON.stringify(res.data.user))
+        console.log(localStorage.getItem("token"));
         onClose()
     }).catch(err=>{
         setErrors(err.response?.data?.error)

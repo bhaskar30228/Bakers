@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './AddCakes.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -29,13 +29,18 @@ const handleSubmit = async (e) => {
         formData.append("name", cakesData.name);
         formData.append("price", cakesData.price);
         formData.append("weight", cakesData.weight);
+        const token = localStorage.getItem("token"); 
+        console.log("Token:", token); // Debug A
         if (cakesData.image) {
             formData.append("image", cakesData.image);
         }
         cakesData.flavors.forEach(flavor => {
             formData.append("flavors", flavor);
         });
-        const response = await axios.post("https://bakers-1.onrender.com/cakes", formData, {
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND||"http://localhost:5000"}/cakes`, formData, {
+          headers:{
+            Authorization: `Bearer ${token}`,
+          }
         });
         console.log("Server response:", response.data); // Debug C
         setSuccessMessage('Cake added successfully!');
@@ -130,7 +135,7 @@ const handleInputChange = (e) => {
             name="image"
             onChange={handleInputChange}
             accept="image/*"
-            required
+            // required
           />
         </div>
 
