@@ -28,19 +28,19 @@ export const userLogin = async (req, res) => {
     const { email, password } = req.body;
     
     if (!email || !password) {
-      return res.status(400).json({ message: "Email and password required" });
+      return res.status(402).json({ message: "Email and password required" });
     }
 
     const user = await User.findOne({ email });
     console.log(user);
     
     if (!user) {
-      return res.status(400).json({ error: "Invalid credentials" });
+      return res.status(401).json({ error: "Invalid credentials" });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ error: "Invalid credentials" });
+      return res.status(405).json({ error: "Invalid credentials" });
     }
 
     const token = generateToken(user._id, user.role);
